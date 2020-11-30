@@ -28,12 +28,12 @@ ol, ul {
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 134px;
   margin-right: -1px;
   margin-top: -1px;
-  padding: 0;
+  padding: 10;
   text-align: center;
-  width: 34px;
+  width: 134px;
 }
 
 .square:focus {
