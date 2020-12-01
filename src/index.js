@@ -119,6 +119,7 @@ class Game5 extends React.Component { // this class extends thus ES6, parent/chi
         </div>
         <div className="game-info"> 
           <div>{status}</div>
+          
           <ol>{moves}</ol> 
         </div> 
       </div>
@@ -126,10 +127,10 @@ class Game5 extends React.Component { // this class extends thus ES6, parent/chi
   }
 } // ending of the class function.
 
-ReactDOM.render(<Game5 />, document.getElementById("root"));
+ReactDOM.render(<Game5 />, document.getElementById("root")); // Vertuial DOM rendering Game 5 to browser by calling the root element id...
 
-function calculateWinner(squares) {
-  const lines = [
+function calculateWinner(squares) { // setting up the function for a loop
+  const lines = [ 
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -138,12 +139,12 @@ function calculateWinner(squares) {
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+  ]; // closing the array...
+  for (let i = 0; i < lines.length; i++) { // looking for the length of array of lines to evaluate the value condition 
+    const [a, b, c] = lines[i]; // three lines per 
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) { // checking to what to return based on sq values...
+      return squares[a]; // returning what is discovered...
     }
   }
-  return null;
+  return null; // a place holder value 
 }
