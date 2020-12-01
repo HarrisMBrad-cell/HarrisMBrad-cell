@@ -1,34 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from 'react'; // importing Libs
+import ReactDOM from 'react-dom'; // importing Virtuial Document Object Model 
+import './index.css'; // importing the file into this file...
 
 
-function Square(props) {
-  return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
+function Square(props) { // sq function passing props
+  return ( // return statement
+    /* button element assigned name and property w/ 
+    inherited props to the onClick objects value...*/
+    <button className="square" onClick={props.onClick}> 
+      {props.value} 
     </button>
-  );
-}
+  ); // ending of statment...
+} // closing this function.
 
-class Board extends React.Component {
-  renderSquare(i) {
-    return (
-      <Square
-        value={this.props.squares[i]}
-        onClick={() => this.props.onClick(i)}
+class Board extends React.Component { // this class extends thus ES6, parent/child hirarchy...
+  renderSquare(i) { // HOC pure loaded with i value
+    return ( // return statment
+      <Square // Sq Component 
+        value={this.props.squares[i]} // value is being set w/ props value inheritance from array i
+        onClick={() => this.props.onClick(i)} // built-in onClick pushing property object from array values
       />
-    );
-  }
+    ); // ending statment
+  } // closing function.
 
-  render() {
-    return (
-      <div>
-        <div className="board-row">
+  render() { // render method call
+    return ( // to return these pure HOC's objects below...0-8 in rows of three w/ class name of board-row...
+      <div> 
+        <div className="board-row"> 
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
-        </div>
+        </div> 
         <div className="board-row">
           {this.renderSquare(3)}
           {this.renderSquare(4)}
@@ -40,23 +42,23 @@ class Board extends React.Component {
           {this.renderSquare(8)}
         </div>
       </div>
-    );
-  }
-}
+    ); // closing the method
+  } // closing the function...
+} // closing the class HOC...
 
-class Game5 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: [
+class Game5 extends React.Component { // this class extends thus ES6, parent/child hirarchy for Game 5 component. 
+  constructor(props) { // getting derived state from props for the mounting process
+    super(props); // aways do this for inheritance 
+    this.state = { // setting state
+      history: [ // to a history array
         {
-          squares: Array(9).fill(null)
+          squares: Array(9).fill(null) // sq values to the amount in the array from rendered Square HOC 0-8, and given a empty value of null. 
         }
-      ],
-      stepNumber: 0,
-      xIsNext: true
-    };
-  }
+      ],// end of history array values
+      stepNumber: 0, // declaring steps starting w/0
+      xIsNext: true // declaring  x is next to boolean value of true
+    }; // closing the state.
+  } // closing the class HOC...
 
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
