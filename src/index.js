@@ -48,8 +48,8 @@ class Board extends React.Component { // this class extends thus ES6, parent/chi
 
 class Game5 extends React.Component { // this class extends thus ES6, parent/child hirarchy for Game 5 component. 
   constructor(props) { // getting derived state from props for the mounting process
-    super(props); // aways do this for inheritance 
-    this.state = { // setting state
+    super(props); // always do this for inheritance 
+    this.state = { // setting state object...
       history: [ // to a history array
         {
           squares: Array(9).fill(null) // sq values to the amount in the array from rendered Square HOC 0-8, and given a empty value of null. 
@@ -97,7 +97,9 @@ class Game5 extends React.Component { // this class extends thus ES6, parent/chi
         'Go to game start'; // string for the start
       return ( // method to list the moves to key position
         <li key={move}> 
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button 
+          onClick={() => this.jumpTo(move)}>{desc}
+          </button>
         </li>
       );
     });
@@ -142,8 +144,8 @@ function calculateWinner(squares) { // setting up the function for a loop
   ]; // closing the array...
   for (let i = 0; i < lines.length; i++) { // looking for the length of array of lines to evaluate the value condition 
     const [a, b, c] = lines[i]; // three lines per 
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) { // checking to what to return based on sq values...
-      return squares[a]; // returning what is discovered...
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) { // checking on what to return based on sq values...
+      return squares[a]; // returning what is discovered based on the evaluation.
     }
   }
   return null; // a place holder value 
