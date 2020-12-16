@@ -1,8 +1,13 @@
-import React from 'react'; // importing Libs
-import ReactDOM from 'react-dom'; // importing Virtuial Document Object Model 
-import './index.css'; // importing the file into this file...
+import React from 'react'; // imports React library
+import ReactDOM from 'react-dom'; // imports ReactDOM 
+import './index.css'; // imports the css file.
 
-
+/* 
+When called, this Square component will create a square button. 
+The button inherits the onClick method and the value property 
+from the Board component. The value of the "value" property will
+be displayed on the button.
+*/
 function Square(props) { // sq function passing props
   return ( // return statement
     /* button element assigned name and property w/ 
@@ -13,9 +18,25 @@ function Square(props) { // sq function passing props
   ); // ending of statment...
 } // closing this function.
 
+/* 
+The primary job of the Board component is to make a grid of buttons (using the Square component) to make the Tic-Tac-Toe game board.
+*/
+
 class Board extends React.Component { // this class extends thus ES6, parent/child hirarchy...
   renderSquare(i) { // HOC pure loaded with i value
-    return ( // return statment
+    return ( // return statment...
+        /* 
+      The value property is passed to the Square component. It is set equal
+      to the value that is held in the "i" index of the squares array that
+      is passed in via props. These props come from the Game component. This
+      value property is what will determine whether the Square will display 
+      an "X", an "O", or nothing.
+
+      The onClick property is also passed to the Square component. It is set
+      equal to the onClick method that is passed in via props. These props come 
+      from the Game component. This onClick value will call the handleClick method
+      from the Game component.
+      */
       <Square // Sq Component 
         value={this.props.squares[i]} // value is being set w/ props value inheritance from array i
         onClick={() => this.props.onClick(i)} // built-in onClick pushing property object from array values
@@ -23,6 +44,7 @@ class Board extends React.Component { // this class extends thus ES6, parent/chi
     ); // ending statment
   } // closing function.
 
+// render function will actually make something appear on the screen.
   render() { // render method call
     return ( // to return these pure HOC's objects below...0-8 in rows of three w/ class name of board-row...
       <div> 
