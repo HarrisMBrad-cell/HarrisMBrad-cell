@@ -2,6 +2,9 @@
 This is a project Tic-Tac-Toe(Game 5) for learning or practicing lifting state up in React.
 From: https://reactjs.org/tutorial/tutorial.html
 
+## Join In ##
+Just fork or Clone
+
 I have commented out the lines to allow for better understanding of this application. 
 Lets you play tic-tac-toe,
 Indicates when a player has won the game,
