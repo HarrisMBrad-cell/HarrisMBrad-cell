@@ -1,7 +1,8 @@
 # tttr-five
 
 This is a project Tic-Tac-Toe(Game 5) for learning or practicing lifting state up in React.
-From: https://reactjs.org/tutorial/tutorial.html
+Tic-Tac-Toe App with moves marker. Good for all ages and stages of development in on going project. My tribute to Dr. Faulkner
+From round four: https://github.com/HarrisMBrad/tttr-four
 
 ## Just fork or Clone
 
