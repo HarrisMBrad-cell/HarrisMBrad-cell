@@ -12,7 +12,7 @@ function Square(props) { //sq function passing props
   return ( //return statement
     /* button element assigned name and property w/ 
     inherited props to the onClick objects value...*/
-    <button 
+    <button
       className="square"
       onClick={props.onClick}>
       {props.value}
@@ -51,7 +51,7 @@ class Board extends React.Component {
 
   // render function will actually make something appear on the screen
   render() { // render method call
-    
+
     /*
     The primary function of this makeRows function is to set up a grid
     of Squares and return it
@@ -169,7 +169,7 @@ class Game5 extends React.Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    
+
     /*
     This line of code determines the value that will be put into the element of the squares
     array whose index corresponds to the Square that was clicked. If it is X's turn, an "X" 
@@ -267,7 +267,7 @@ class Game5 extends React.Component {
     // (The return value will be either "X", "O", or, in the case of a draw, null.)
     const winner = calculateWinner(current.squares);
 
-    
+
     //The moves mapping function repeats for every object in the history array
     const moves = history.map((step, move) => {
       // Creates a variable that holds the value of clicked for the object that is in
@@ -279,7 +279,7 @@ class Game5 extends React.Component {
 
       // Creates a variable that will hold a row number
       let row;
-      
+
       /*
       Creates a variable that will hold a string. The text of this string will depend
       on the index that is passed into the moves mapping function. If an index of 0 is passed in, 
@@ -293,7 +293,7 @@ class Game5 extends React.Component {
       // Creates a variable that will hold a string. The text of this string will
       // depend on whether the boolean pastXIsNext is true or false for the object
       // that is in the specified index of the history array.
-      const currPlayer =  history[move].pastXIsNext ? 'X' : 'O';
+      const currPlayer = history[move].pastXIsNext ? 'X' : 'O';
 
       // This switch statement will set the column and row values based on the index number that
       // is passed in
@@ -335,7 +335,7 @@ class Game5 extends React.Component {
           row = 3;
           break;
         default:
-          break; 
+          break;
       }
 
       // Creates a variable that will hold a string. The text of the string will depend on the
@@ -344,7 +344,7 @@ class Game5 extends React.Component {
       const summary = move ?
         currPlayer + ' played on coordinate ' + col + ', ' + row :
         ''
-      
+
       /*
       Returns a list item for each object in the history array. Each list item uses variables (instead
       of hard-coded values) so that different text is shown for each list item. The style property uses a
@@ -353,13 +353,13 @@ class Game5 extends React.Component {
       state while returning to a previous move in the list.
       */
       return (
-        <li id='item' 
+        <li id='item'
           key={move}
-          style={this.state.stepNumber === move ? 
-            {fontWeight: 'bold'} : {fontWeight: 'normal'}}>
+          style={this.state.stepNumber === move ?
+            { fontWeight: 'bold' } : { fontWeight: 'normal' }}>
           <div>{summary}</div>
           <button onClick={() => this.jumpTo(move)}
-            >{desc}
+          >{desc}
           </button>
         </li>
       );
@@ -392,16 +392,16 @@ class Game5 extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Board 
-            squares = {current.squares}
-            onClick = {(i) => this.handleClick(i)}
+          <Board
+            squares={current.squares}
+            onClick={(i) => this.handleClick(i)}
           />
         </div>
 
         <div className="game-info">
           <div id="status">{status}</div>
           <div id="historyTitle">Past Moves:</div>
-          <ul id='movesList' style={{ listStyleType: 'none'}}>
+          <ul id='movesList' style={{ listStyleType: 'none' }}>
             {moves}
           </ul>
           <button id='toggleButton' onClick={() => this.handleReorder()}>Reverse Steps</button>
