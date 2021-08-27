@@ -1,11 +1,13 @@
+
 # tic-tac-to-round-five
 
+
 This is a project Tic-Tac-Toe(Game 5) for learning or practicing lifting state up in React.
-From: https://reactjs.org/tutorial/tutorial.html
+Tic-Tac-Toe App with moves marker. Good for all ages and stages of development in on going project. My tribute to Dr. Faulkner
+From round four: https://github.com/HarrisMBrad/tttr-four
 
 ## Just Fork or Clone
 
-I have commented out the lines to allow for a better understanding of this application.
 Lets you play tic-tac-toe,
 Indicates when a player has won the game,
 Stores a game’s history as a game progresses,
