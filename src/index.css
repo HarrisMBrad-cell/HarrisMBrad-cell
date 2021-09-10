@@ -1,13 +1,14 @@
 body {
   margin: 400;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-ol, ul {
+ol,
+ul {
   padding-left: 30px;
 }
 
@@ -33,7 +34,7 @@ ol, ul {
   margin-top: -1px;
   padding: 10;
   text-align: center;
-  text-emphasis-color: pink;
+  text-emphasis-color: rgb(88, 66, 70);
   width: 134px;
 }
 

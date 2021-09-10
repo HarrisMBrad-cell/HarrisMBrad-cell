@@ -1,6 +1,6 @@
-import React from 'react'; // imports React library
-import ReactDOM from 'react-dom'; // imports ReactDOM
-import './index.css'; // imports the css file.
+import React from "react"; // imports React library
+import ReactDOM from "react-dom"; // imports ReactDOM
+import "./index.css"; // imports the css file.
 
 /* 
 When called, this Square component will create a square button. 
@@ -8,13 +8,13 @@ The button inherits the onClick method and the value property
 from the Board component. The value of the "value" property will
 be displayed on the button.
 */
-function Square(props) { //sq function passing props
-  return ( //return statement
+function Square(props) {
+  //sq function passing props
+  return (
+    //return statement
     /* button element assigned name and property w/ 
     inherited props to the onClick objects value...*/
-    <button 
-      className="square"
-      onClick={props.onClick}>
+    <button className="square" onClick={props.onClick}>
       {props.value}
     </button>
   ); //ending of statment...
@@ -28,8 +28,10 @@ class Board extends React.Component {
   This renderSquare method calls the Square component to make one button.
   The method accepts one argument "i".
   */
-  renderSquare(i) { //HOC pure loaded with i value
-    return ( // return statment...
+  renderSquare(i) {
+    //HOC pure loaded with i value
+    return (
+      // return statment...
       /* 
       The value property is passed to the Square component. It is set equal
       to the value that is held in the "i" index of the squares array that
@@ -50,8 +52,9 @@ class Board extends React.Component {
   } // closing function.
 
   // render function will actually make something appear on the screen
-  render() { // render method call
-    
+  render() {
+    // render method call
+
     /*
     The primary function of this makeRows function is to set up a grid
     of Squares and return it
@@ -84,29 +87,27 @@ class Board extends React.Component {
         in the inside loop onto the squareGrid array
         */
         squareGrid.push(
-          <tr key={i} className='board-row'>
+          <tr key={i} className="board-row">
             {squareArray}
-          </tr>)
+          </tr>
+        );
       }
 
       // returns the squareGrid array
       return squareGrid;
-    }
+    };
 
     // returns the squareGrid array (by calling the makeRows function) and puts it into a table
     return (
       <table>
-        <tbody>
-          {makeRows()}
-        </tbody>
+        <tbody>{makeRows()}</tbody>
       </table>
-    )
+    );
   }
 }
 
 // The Game class is a stateful component that provides most of the game logic
 class Game5 extends React.Component {
-
   // Stateful components need a constructor
   constructor(props) {
     // super() must always be called in a constructor
@@ -121,17 +122,22 @@ class Game5 extends React.Component {
     (4) A movesReversed boolean that will remember whether the moves have been
     reversed on the game's status board.
     */
-    this.state = { // setting state object...
-      history: [{// to object inside the history array
-        squares: Array(9).fill(null), //sq values to the amount in the array from rendered Square HOC 0-8, and given a empty value of null.
-        clicked: null, // null passed as placeholder
-        pastXIsNext: false, // boolean default value...
-      }], // end of history array values
+    this.state = {
+
+      // setting state object...
+      history: [
+        {
+          // to object inside the history array
+          squares: Array(9).fill(null), //sq values to the amount in the array from rendered Square HOC 0-8, and given a empty value of null.
+          clicked: null, // null passed as placeholder
+          pastXIsNext: false, // boolean default value...
+        },
+      ], // end of history array values
       xIsNext: true, // declaring  x is next to boolean value of true
       stepNumber: 0, // declaring steps starting with zero
       movesReversed: false, // boolean default value
     }; // closing the state.
-  } // closing component. 
+  } // closing component.
 
   /*
   This handleClick function determines what happens when any of the Squares on the
@@ -139,7 +145,20 @@ class Game5 extends React.Component {
   the makeRows function of the Board component. This means that each Square will
   pass in it's own unique number between 0-8 into this function.
   */
+
+  /**
+   * Set Square Data function for values added. This is for bubbling...
+   */
+  setSqData = this.data;
+
+  setSqData(i) {
+
+    return i.data; // Data: X Player square location in square onClick value prop is passed about the array
+
+  }
+
   handleClick(i) {
+
 
     /*
     Since this game gives the players the option to reverse the list of past moves on
@@ -169,34 +188,36 @@ class Game5 extends React.Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    
+
     /*
     This line of code determines the value that will be put into the element of the squares
     array whose index corresponds to the Square that was clicked. If it is X's turn, an "X" 
     will be displayed. If it is O's turn, an "O" will be displayed.
-
+  
     This line of code also determines the value that will be passed to the Board component and then
     to the particular Square component. This value will be displayed on the button.
-    If it is X's turn, an "X" will be displayed. If it is O's turn, an "O" will be displayed.
+    If it is X's turn, an "X" will be displayed. If it is O's turn, an "O" will be displayed..... 
     */
-    squares[i] = this.state.xIsNext ? "X" : "O";
+    squares[i] = this.state.xIsNext ? "X" + i : "O";
 
     // Sets the new state
     this.setState({
       // A new object is added to the end of the history array
-      history: history.concat([{
-        // This property will hold the new squares array that
-        // includes the most recent move
-        squares: squares,
+      history: history.concat([
+        {
+          // This property will hold the new squares array that
+          // includes the most recent move
+          squares: squares,
 
-        // This property will hold the record of which Square
-        // was clicked
-        clicked: i,
+          // This property will hold the record of which Square
+          // was clicked
+          clicked: i,
 
-        // This property will hold the record of whose turn
-        // it was
-        pastXIsNext: !pastXIsNext,
-      }]),
+          // This property will hold the record of whose turn
+          // it was
+          pastXIsNext: !pastXIsNext,
+        },
+      ]),
 
       // Toggles whose turn it is in state
       xIsNext: !this.state.xIsNext,
@@ -249,8 +270,8 @@ class Game5 extends React.Component {
       // The state needs to know whose turn it was on the selected past move number. Since X
       // has their turn only on "turn 0" and every even turn, the equation will evaluate to true
       // if the step number that is passed in is 0 or an even number. Otherwise, it will
-      // evaluate to false, meaning that it is O's turn. 
-      xIsNext: (step % 2) === 0,
+      // evaluate to false, meaning that it is O's turn.
+      xIsNext: step % 2 === 0,
     });
   }
 
@@ -267,7 +288,6 @@ class Game5 extends React.Component {
     // (The return value will be either "X", "O", or, in the case of a draw, null.)
     const winner = calculateWinner(current.squares);
 
-    
     //The moves mapping function repeats for every object in the history array
     const moves = history.map((step, move) => {
       // Creates a variable that holds the value of clicked for the object that is in
@@ -279,21 +299,19 @@ class Game5 extends React.Component {
 
       // Creates a variable that will hold a row number
       let row;
-      
+
       /*
       Creates a variable that will hold a string. The text of this string will depend
       on the index that is passed into the moves mapping function. If an index of 0 is passed in, 
       the first part of the ternary operator will evaluate to false. For every other index, the
       first part of the ternary operator will evaluate to true.
       */
-      const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
+      const desc = move ? "Go to move #" + move : "Go to game start";
 
       // Creates a variable that will hold a string. The text of this string will
       // depend on whether the boolean pastXIsNext is true or false for the object
       // that is in the specified index of the history array.
-      const currPlayer =  history[move].pastXIsNext ? 'X' : 'O';
+      const currPlayer = history[move].pastXIsNext ? "X" : "O";
 
       // This switch statement will set the column and row values based on the index number that
       // is passed in
@@ -335,16 +353,16 @@ class Game5 extends React.Component {
           row = 3;
           break;
         default:
-          break; 
+          break;
       }
 
       // Creates a variable that will hold a string. The text of the string will depend on the
       // value of the index that is passed in via the "move" argument. For an index of 0, there
       // will be an empty string.
-      const summary = move ?
-        currPlayer + ' played on coordinate ' + col + ', ' + row :
-        ''
-      
+      const summary = move
+        ? currPlayer + " played on coordinate " + col + ", " + row
+        : "";
+
       /*
       Returns a list item for each object in the history array. Each list item uses variables (instead
       of hard-coded values) so that different text is shown for each list item. The style property uses a
@@ -353,14 +371,17 @@ class Game5 extends React.Component {
       state while returning to a previous move in the list.
       */
       return (
-        <li id='item' 
+        <li
+          id="item"
           key={move}
-          style={this.state.stepNumber === move ? 
-            {fontWeight: 'bold'} : {fontWeight: 'normal'}}>
+          style={
+            this.state.stepNumber === move
+              ? { fontWeight: "bold" }
+              : { fontWeight: "normal" }
+          }
+        >
           <div>{summary}</div>
-          <button onClick={() => this.jumpTo(move)}
-            >{desc}
-          </button>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
     });
@@ -371,14 +392,14 @@ class Game5 extends React.Component {
     // If the value that is returned from the calculateWinner function is not null...
     if (winner) {
       // then the status displays who won.
-      status = 'Winner: ' + winner;
+      status = "Winner: " + winner;
     } else if (current.squares.includes(null)) {
       // If the squares array includes null (meaning that there are still some empty spaces
       // on the game board), then the status displays whose turn it is.
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     } else {
       // Otherwise, the status indicates a draw
-      status = 'Result: Draw!'
+      status = "Result: Draw!";
     }
 
     /*
@@ -392,19 +413,21 @@ class Game5 extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Board 
-            squares = {current.squares}
-            onClick = {(i) => this.handleClick(i)}
+          <Board
+            squares={current.squares}
+            onClick={(i) => this.handleClick(i)}
           />
         </div>
 
         <div className="game-info">
           <div id="status">{status}</div>
           <div id="historyTitle">Past Moves:</div>
-          <ul id='movesList' style={{ listStyleType: 'none'}}>
+          <ul id="movesList" style={{ listStyleType: "none" }}>
             {moves}
           </ul>
-          <button id='toggleButton' onClick={() => this.handleReorder()}>Reverse Steps</button>
+          <button id="toggleButton" onClick={() => this.handleReorder()}>
+            Reverse Steps
+          </button>
         </div>
       </div>
     );
@@ -450,4 +473,9 @@ function calculateWinner(squares) {
 
 // This line of code renders the Game component inside the div element that has an id of
 // "root". This element is located in the index.html file that is in the public folder.
-ReactDOM.render(<Game5 />, document.getElementById('root'));
+ReactDOM.render(
+  <React.StrictMode>
+    <Game5 />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
