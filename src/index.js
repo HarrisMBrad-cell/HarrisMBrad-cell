@@ -14,7 +14,12 @@ function Square(props) {
     //return statement
     /* button element assigned name and property w/ 
     inherited props to the onClick objects value...*/
-    <button className="square" onClick={props.onClick}>
+
+    
+    <button
+      className="square"
+      onClick={props.onClick}>
+
       {props.value}
     </button>
   ); //ending of statment...
@@ -52,8 +57,11 @@ class Board extends React.Component {
   } // closing function.
 
   // render function will actually make something appear on the screen
-  render() {
-    // render method call
+
+  
+
+  render() { // render method call
+
 
     /*
     The primary function of this makeRows function is to set up a grid
@@ -288,6 +296,9 @@ class Game5 extends React.Component {
     // (The return value will be either "X", "O", or, in the case of a draw, null.)
     const winner = calculateWinner(current.squares);
 
+
+
+
     //The moves mapping function repeats for every object in the history array
     const moves = history.map((step, move) => {
       // Creates a variable that holds the value of clicked for the object that is in
@@ -311,7 +322,9 @@ class Game5 extends React.Component {
       // Creates a variable that will hold a string. The text of this string will
       // depend on whether the boolean pastXIsNext is true or false for the object
       // that is in the specified index of the history array.
-      const currPlayer = history[move].pastXIsNext ? "X" : "O";
+
+      const currPlayer = history[move].pastXIsNext ? 'X' : 'O';
+
 
       // This switch statement will set the column and row values based on the index number that
       // is passed in
@@ -359,9 +372,11 @@ class Game5 extends React.Component {
       // Creates a variable that will hold a string. The text of the string will depend on the
       // value of the index that is passed in via the "move" argument. For an index of 0, there
       // will be an empty string.
+
       const summary = move
         ? currPlayer + " played on coordinate " + col + ", " + row
         : "";
+
 
       /*
       Returns a list item for each object in the history array. Each list item uses variables (instead
@@ -371,17 +386,17 @@ class Game5 extends React.Component {
       state while returning to a previous move in the list.
       */
       return (
-        <li
-          id="item"
+
+       
+        <li id='item'
           key={move}
-          style={
-            this.state.stepNumber === move
-              ? { fontWeight: "bold" }
-              : { fontWeight: "normal" }
-          }
-        >
+          style={this.state.stepNumber === move ?
+            { fontWeight: 'bold' } : { fontWeight: 'normal' }}>
           <div>{summary}</div>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button onClick={() => this.jumpTo(move)}
+          >{desc}
+          </button>
+
         </li>
       );
     });
@@ -422,7 +437,9 @@ class Game5 extends React.Component {
         <div className="game-info">
           <div id="status">{status}</div>
           <div id="historyTitle">Past Moves:</div>
-          <ul id="movesList" style={{ listStyleType: "none" }}>
+
+          <ul id='movesList' style={{ listStyleType: 'none' }}>
+
             {moves}
           </ul>
           <button id="toggleButton" onClick={() => this.handleReorder()}>
