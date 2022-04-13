@@ -1,5 +1,16 @@
+# Development 
 
-# tic-tac-to-round-five
+## For Motal
+ - Required MVP (Game modeled and extensible)
+A: Modal Box
+
+## Q: How will I manage my time to complete this project?
+A:  Timeboxed: 4hrs, 1month/2 week sprint cycle & auto gen issue tracking on triggered in Jira.
+Oh Young Ebon Yon 
+& Aaa That’s Right Productions
+RE: mobile-based or a web application
+
+### tic-tac-to-round-five
 
 
 This is a project Tic-Tac-Toe(Game 5) for learning or practicing lifting state up in React.
@@ -13,7 +24,7 @@ Indicates when a player has won the game,
 Stores a game’s history as a game progresses,
 Allows players to review a game’s history and see previous versions of a game’s board.
 
-# Use markdown
+# To Devs: Use markdown in a new dev-branch`ofchoice`;
 
 Paragraphs are separated by a blank line.
 
